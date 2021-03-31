@@ -4,6 +4,15 @@ include "../koneksi.php";
 $prof = mysqli_query($koneksi, "SELECT * FROM profile");
 $profile = mysqli_fetch_array($prof);
 
+//mengatasi jika user langsung masuk menggunakan link, tanpa login
+if(empty($_SESSION['id']) or empty($_SESSION['username']))
+{
+  echo "<script>
+      alert('Maaf, untuk mengakses halaman ini, Silahkan Login terlebih dahulu!');
+      document.location='index.php';
+      </script>";
+}
+
 // simpen sosmed
 if(isset($_POST['simpenpf'])){
     $idn = $_POST['idnya'];
