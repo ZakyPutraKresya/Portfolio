@@ -105,6 +105,9 @@ if(empty($_SESSION['id']) or empty($_SESSION['username']))
                         <footer class="blockquote-footer">Pesan ini dikirim oleh <cite title="Source Title"><?=$msg['nama']?></cite></footer>
                     </blockquote>
                 </div>
+                <div class="card-footer">
+                <a href="ekspor.php?id=<?=$msg['id']?>&pesan=<?=$msg['pesan']?>&nama=<?=$msg['nama']?>&email=<?=$msg['email']?>" class="btn btn-primary">Cetak</a>
+                </div>
             </div>
             <?php
             }
