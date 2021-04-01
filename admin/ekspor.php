@@ -7,7 +7,7 @@ $nama = $_GET['nama'];
 $pesan = $_GET['pesan'];
 
 require_once __DIR__ . '/mpdf/vendor/autoload.php';
-$mpdf = new \Mpdf\Mpdf();
+$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4']);
 ob_start(); 
 
 //mengatasi jika user langsung masuk menggunakan link, tanpa login
@@ -54,5 +54,5 @@ if(empty($_SESSION['id']) or empty($_SESSION['username']))
  $html = ob_get_contents(); 
  ob_end_clean();
  $mpdf->WriteHTML(utf8_encode($html));
- $mpdf->Output();
+ $mpdf->Output("Pesan $nama.pdf" ,'I');
 ?>
